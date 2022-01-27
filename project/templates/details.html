@@ -5,31 +5,89 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    <link src="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
     <title>Crypto-Follower</title>
 </head>
 <body>
     <!-- Header -->
     <header id="showcase">
         <section id="navbar">
-            <img class="imgs" src="..\images\'icon'.png" alt="App icon">
+            <a href="/templates/index.html"><img class="imgs" src="..\images\logo.png" alt="A"></a>
             <h1>Crypto-Follower</h1>
-            <i class="fa fa-sign-out" aria-hidden="true"></i>
+            <div class="in-out">
+                <i class="fas fa-sign-in-alt" onclick="openModul()"></i>
+                <i class="fas fa-sign-out-alt"></i>
+            </div>
         </section>
         <section class="flex"> 
-            <ul id="three_best_and_worst">
-                <li>NinjaFloki</li>
-                <li>FirstDog</li>
-                <li>Primecoin</li>
-            </ul>
-            <div id="switch">
-                <i id="price_up" class="fa fa-hand-o-up" aria-hidden="true"></i>
-                <i id="price_down" class="fa fa-hand-o-down" aria-hidden="true"></i>
+            <div class="play-pause">
+                <i class="fa fa-pause-circle" aria-hidden="true" onclick="play()"></i>
+            </div>
+            <div class="moving-currencies">
+                <a href="/bitcoin" class="currency">
+                    <span class="name">Bitcoin</span>
+                    <span class="price-wrapper">
+                        <span class="price">$36,271.50</span>
+                        <span class="change">-4.19%</span>
+                    </span>
+                </a>
+                <a href="/ethereum" class="currency">
+                    <span class="name">Ethereum</span>
+                    <span class="price-wrapper">
+                        <span class="price">$2,411.41</span>
+                        <span class="change">-9.12%</span>
+                    </span>
+                </a>
+                <a href="/ethereum" class="currency">
+                    <span class="name">Ethereum</span>
+                    <span class="price-wrapper">
+                        <span class="price">$2,411.41</span>
+                        <span class="change">-9.12%</span>
+                    </span>
+                </a>
             </div>
         </section>
     </header>
-    <main id="details_box">
 
     </main>
+
+    <script>
+        let log = document.getElementById("login");
+        let reg = document.getElementById("register");
+        let btn = document.getElementById("btn");
+
+        function register() {
+            log.style.left = "-400px";
+            reg.style.left = "50px";
+            btn.style.left = "110px";
+        }
+        function login() {
+            log.style.left = "50px";
+            reg.style.left = "450px";
+            btn.style.left = "0";
+        }
+
+        function openModul() {
+            let popup = document.querySelector("#form");
+            let blur = document.querySelector(".blur");
+            popup.classList.toggle("active");
+            blur.classList.toggle("active");
+        }
+        function closeModul() {
+            let popup = document.querySelector("#form");
+            let blur = document.querySelector(".blur");
+            popup.classList.remove("active");
+            blur.classList.remove("active");
+        }
+        function play() {
+            let play = document.querySelector(".play-pause");
+            play.innerHTML = '<i class="fa fa-play-circle" aria-hidden="true" onclick="pause()"></i>';
+        }
+        function pause() {
+            let pause = document.querySelector(".play-pause");
+            pause.innerHTML = '<i class="fa fa-pause-circle" aria-hidden="true" onclick="play()"></i>';
+        }
+    </script>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/all.js" integrity="sha384-SlE991lGASHoBfWbelyBPLsUlwY1GwNDJo3jSJO04KZ33K2bwfV9YBauFfnzvynJ" crossorigin="anonymous"></script>
 </body>
 </html>
