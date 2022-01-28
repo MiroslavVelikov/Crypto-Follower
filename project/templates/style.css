@@ -221,51 +221,76 @@ input[type=checkbox].toggle:checked + label::before {
   border: 1px dotted white;
   border-top: 0px; border-bottom: 0px;
 }
-.box ul {
-  position: relative;
+#table {
   width: 100%;
-  padding-left: 0;
-  padding: 5wh;
+  font-size: 20px;
 }
-.box ul li {
-  list-style: none;
-  padding: 10px;
-  padding-right: 0;
-  width: 100%;
-  font-size: x-large;
-  justify-content: space-between;
-  box-shadow: 0 5px 25px rgba(0,0,0,.1);
+#table thead tr {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 10px 0 10px 0;
+  border-bottom: 1px dotted white;
+}
+#table tbody tr {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 15px 0 15px 0;
+  border-top: 1px solid #cfd6e4;
   transition: transform 0.5s;
 }
-.box ul:hover li {
+#table tbody > *:nth-child(1) {
+ border-top: 0;
+}
+#table tbody tr td {
+  text-align: center;
+}
+tr .numeration {
+  flex: 1 1 3.5%;
+}
+tr .name {
+  flex: 1 1 25%;
+}
+tr .price {
+  flex: 1 1 25%;
+}
+tr .h24 {
+  flex: 1 1 20%;
+}
+tr .d7 {
+  flex: 1 1 20%;
+}
+tr .follow-btn {
+  flex: 1 1 5%;
+}
+.border {
+  width: 100%;
+  border-top: 1px dotted white;
+}
+#table tbody:hover tr {
   opacity: 0.2;
 }
-.box ul li:hover {
+#table tbody tr:hover {
   opacity: 1;
   transform: scale(1.1);
   z-index: 100;
   background: #25bcff;
   box-shadow: 0 5px 25px rgba(0,0,0,.1);
   transform: translateY(-10px);
+  cursor: pointer;
 }
-.box ul li .number {
-  width: 30px; height: 20px;
+#table tbody tr .numeration {
+  width: 30px;
   text-align: center;
   line-height: 20px;
   background: #25bcff;
   display: inline-block;
   border-radius: 50%;
-  margin-right: 10px;
   font-size: 12px;
   font-weight: 600;
 }
-.box ul li:hover .number {
+#table tbody tr:hover .numeration {
   background: #fff;
   color: #25bcff;
-}
-.border {
-  width: 100%;
-  border-top: 1px dotted white;
 }
 /* login & register forms */
 #form {

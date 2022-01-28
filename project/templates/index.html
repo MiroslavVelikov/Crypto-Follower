@@ -60,49 +60,68 @@
         <ul id="options">
             <div>
                 <input type="checkbox" class="toggle" id="rounded">
-                <label for="rounded" class="rounded" data-checked="Following" data-unchecked="Ranking"></label>
+                <label for="rounded" class="rounded" data-checked="Following" data-unchecked="Market"></label>
             </div>
         </ul>
+
         <div class="box">
-            <ul id="table">
-                <li>
-                    <span class="number">1</span>
-                    <span class="name">Bitcoin</span>
-                    <span class="price">$42,000.00</span>
-                    <span class="last_24hours">0.97%</span>
-                    <i class="fa fa-plus" aria-hidden="true"></i>
-                </li>
-                <li>
-                    <span class="number">2</span>
-                    <span class="name">Ethereum</span>
-                    <span class="price">$3,344.00</span>
-                    <span class="last_24hours">0.01%</span>
-                    <i class="fa fa-plus" aria-hidden="true"></i>
-                </li>
-                <li>
-                    <span class="number">3</span>
-                    <span class="name">BNB</span>
-                    <span class="price">$499.00</span>
-                    <span class="last_24hours">0.05%</span>
-                    <i class="fa fa-plus" aria-hidden="true"></i>
-                </li>
-                <li>
-                    <span class="number">4</span>
-                    <span class="name">Tether</span>
-                    <span class="price">$1.00</span>
-                    <span class="last_24hours">0.00%</span>
-                    <i class="fa fa-plus" aria-hidden="true"></i>
-                </li>
-                <li>
-                    <span class="number">5</span>
-                    <span class="name">Cardano</span>
-                    <span class="price">$1.40</span>
-                    <span class="last_24hours">9.18%</span>
-                    <i class="fa fa-plus" aria-hidden="true"></i>
-                </li>
-            </ul>
+            <table id="table">
+                <thead>
+                    <tr>
+                        <th class="numeration">#</th>
+                        <th class="name">Name</th>
+                        <th class="price">Price</th>
+                        <th class="h24">24h %</th>
+                        <th class="d7">7d %</th>
+                        <th class="follow-btn"> </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr onclick="location.href='/bitcoin';">
+                        <td class="numeration">1</td>
+                        <td class="name">Bitcoin</td>
+                        <td class="price">$37,033.68</td>
+                        <td class="h24">0.38%</td>
+                        <td class="d7">3.84%</td>
+                        <td class="follow-btn"><i class="fa fa-plus" aria-hidden="true"></i></td>
+                    </tr>
+                    <tr onclick="location.href='/ethereum';">
+                        <td class="numeration">2</td>
+                        <td class="name">Ethereum</td>
+                        <td class="price">$2,440.35</td>
+                        <td class="h24">0.07%</td>
+                        <td class="d7">13.24%</td>
+                        <td class="follow-btn"><i class="fa fa-plus" aria-hidden="true"></i></td>
+                    </tr>
+                    <tr onclick="location.href='/tether';">
+                        <td class="numeration">3</td>
+                        <td class="name">Tether</td>
+                        <td class="price">$1.00</td>
+                        <td class="h24">0.03%</td>
+                        <td class="d7">0.00%</td>
+                        <td class="follow-btn"><i class="fa fa-plus" aria-hidden="true"></i></td>
+                    </tr>
+                    <tr onclick="location.href='/cardano';">
+                        <td class="numeration">4</td>
+                        <td class="name">Cardano</td>
+                        <td class="price">$1.04</td>
+                        <td class="h24">0.44%</td>
+                        <td class="d7">14.37%</td>
+                        <td class="follow-btn"><i class="fa fa-plus" aria-hidden="true"></i></td>
+                    </tr>
+                    <tr onclick="location.href='/bnb';">
+                        <td class="numeration">5</td>
+                        <td class="name">BNB</td>
+                        <td class="price">$386.82</td>
+                        <td class="h24">3.89%</td>
+                        <td class="d7">8.72%</td>
+                        <td class="follow-btn"><i class="fa fa-plus" aria-hidden="true"></i></td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
         <div class="border"></div>
+
         <div class="modul">
             <div id="form">
                 <img src="../images/close.png" alt="close button" id="close" onclick="closeModul()">
