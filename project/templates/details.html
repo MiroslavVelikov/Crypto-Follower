@@ -10,46 +10,124 @@
 </head>
 <body>
     <!-- Header -->
-    <header id="showcase">
-        <section id="navbar">
-            <a href="/templates/index.html"><img class="imgs" src="..\images\logo.png" alt="A"></a>
-            <h1>Crypto-Follower</h1>
-            <div class="in-out">
-                <i class="fas fa-sign-in-alt" onclick="openModul()"></i>
-                <i class="fas fa-sign-out-alt"></i>
-            </div>
-        </section>
-        <section class="flex"> 
-            <div class="play-pause">
-                <i class="fa fa-pause-circle" aria-hidden="true" onclick="play()"></i>
-            </div>
-            <div class="moving-currencies">
-                <a href="/bitcoin" class="currency">
+    <body>
+        <header id="showcase">
+            <section id="navbar">
+                <img class="imgs" src="..\images\logo.png" alt="A">
+                <h1>Crypto-Follower</h1>
+                <div class="in-out">
+                    <i class="fas fa-sign-in-alt" onclick="openModul()"></i>
+                    <i class="fas fa-sign-out-alt"></i>
+                </div>
+            </section>
+            <section class="flex"> 
+                <div class="play-pause">
+                    <i class="fa fa-pause-circle" aria-hidden="true" onclick="play()"></i>
+                </div>
+                <div class="moving-currencies">
+                    <a href="/bitcoin" class="currency">
+                        <span class="name">Bitcoin</span>
+                        <span class="price-wrapper">
+                            <span class="price">$36,271.50</span>
+                            <span class="change">-4.19%</span>
+                        </span>
+                    </a>
+                    <a href="/ethereum" class="currency">
+                        <span class="name">Ethereum</span>
+                        <span class="price-wrapper">
+                            <span class="price">$2,411.41</span>
+                            <span class="change">-9.12%</span>
+                        </span>
+                    </a>
+                    <a href="/ethereum" class="currency">
+                        <span class="name">Ethereum</span>
+                        <span class="price-wrapper">
+                            <span class="price">$2,411.41</span>
+                            <span class="change">-9.12%</span>
+                        </span>
+                    </a>
+                </div>
+            </section>
+        </header>
+        
+        <main class="container_details">
+            <div class="name_and_price">
+                <div class="name_box">
                     <span class="name">Bitcoin</span>
-                    <span class="price-wrapper">
-                        <span class="price">$36,271.50</span>
-                        <span class="change">-4.19%</span>
+                    <span>
+                        <i class="fa fa-plus follow_btn" aria-hidden="true"></i>
                     </span>
-                </a>
-                <a href="/ethereum" class="currency">
-                    <span class="name">Ethereum</span>
-                    <span class="price-wrapper">
-                        <span class="price">$2,411.41</span>
-                        <span class="change">-9.12%</span>
-                    </span>
-                </a>
-                <a href="/ethereum" class="currency">
-                    <span class="name">Ethereum</span>
-                    <span class="price-wrapper">
-                        <span class="price">$2,411.41</span>
-                        <span class="change">-9.12%</span>
-                    </span>
-                </a>
+                </div>
+                <div class="price_and_change">
+                    <div class="change">
+                        <span class="change_24h">
+                            <span class="up">4.32%</span> 
+                            <label for="text">Last 24h</label>
+                        </span>
+                    </div>
+                    <div class="price_box">
+                        <span class="price">$ 37,991</span>
+                    </div>
+                </div>
             </div>
-        </section>
-    </header>
 
-    </main>
+            <div class="more_details_box">
+                <div class="min_max_price">
+                    <div class="min">
+                        <span>Low: $36,388</span>
+                    </div>
+                    <div class="max">
+                        <span>High: $38,139</span>
+                    </div>
+                </div>
+                <div class="market_cap">
+                    <span>Market Cap: $719.39B</span>
+                </div>
+                <div class="volume">
+                    <span>24H Volume: $49.84B</span>
+                </div>
+            </div>
+
+            <div class="price_history_box">
+                <table class="price_history">
+                    <thead>
+                        <tr>
+                            <th class="price">Price</th>
+                            <th class="days_above">Days Above</th>
+                            <th class="p_of_life">% Of Bitcoin Life</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th class="price">
+                                $68,770
+                                <span class="ath"> <i class="fa fa-caret-left" aria-hidden="true"></i> ATH</span>
+                            </th>
+                            <th class="days_above">-</th>
+                            <th class="p_of_life">-</th>
+                        </tr>
+                        <tr>
+                            <th class="price">$60,000</th>
+                            <th class="days_above">40</th>
+                            <th class="p_of_life">0.98%</th>
+                        </tr>
+                        <tr>
+                            <th class="price">
+                                $37,865
+                                <span class="price_now"> <i class="fa fa-caret-left" aria-hidden="true"></i> Price Now</span>
+                            </th>
+                            <th class="days_above">301</th>
+                            <th class="p_of_life">7.34%</th>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="specifics">
+                    <span>
+                        The top-performing year for Bitcoin was 2013 when the price of BTC increased by <span class="up">5,574.72%</span> from $ 13.30 to $ 754.97. The worst performing year for Bitcoin was 2018 when the price dropped by <span class="down">-73.32%</span> from $ 14,046 to $ 3,747.29. The average yearly growth of Bitcoin over the last 13 years is <span class="up">798.32%</span> per year. Usually, Bitcoin performs best in Q2 with an average of <span class="up">136.12%</span> gain and worst in Q3 with <span class="up">9.20%</span> gain.
+                    </span>
+                </div>
+            </div>
+        </main>
 
     <script>
         let log = document.getElementById("login");
@@ -86,6 +164,9 @@
         function pause() {
             let pause = document.querySelector(".play-pause");
             pause.innerHTML = '<i class="fa fa-pause-circle" aria-hidden="true" onclick="play()"></i>';
+        }
+        function follow(el) {
+            el.classList.add("followed");
         }
     </script>
     <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/all.js" integrity="sha384-SlE991lGASHoBfWbelyBPLsUlwY1GwNDJo3jSJO04KZ33K2bwfV9YBauFfnzvynJ" crossorigin="anonymous"></script>
