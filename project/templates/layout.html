@@ -4,9 +4,116 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}"/>
+    <link src="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
     <title>Crypto-Follower</title>
 </head>
 <body>
-    {% block body %}{% endblock %}
+    <!-- Header -->
+    <header id="showcase">
+        <section id="navbar">
+            <a href="/">
+                <img src="{{url_for('static', filename='logo.png')}}" alt="Logo" style="width: 45px; height: 60px; cursor: pointer;">
+            </a>
+            <h1>Crypto-Follower</h1>
+            <div class="in-out">
+                <i class="fas fa-sign-in-alt" onclick="openModul()" style="cursor: pointer;"></i>
+                <i class="fas fa-sign-out-alt" style="cursor: pointer;"></i>
+            </div>
+        </section>
+        <section class="flex"> 
+            <div class="play-pause">
+                <i class="fa fa-pause-circle" aria-hidden="true" onclick="play()"></i>
+            </div>
+            <div class="moving-currencies">
+                {% for currency in slider %}
+                    <a href="/details/{{ currency.name.lower() }}" class="currency">
+                        <span class="name">{{ currency.name }}</span>
+                        <span class="price-wrapper {{ currency.color }}">
+                            <span class="price">{{ currency.price }}</span>
+                            <span class="change">{{ currency.change }}</span>
+                        </span>
+                    </a>
+                {% endfor %}
+            </div>
+        </section>
+    </header>
+
+    <!-- Main Area -->
+    <main>
+        <!-- Empty for now -->>
+        {% block body %}{% endblock %}
+
+        <div class="modul">
+            <div id="form">
+                <img src="{{url_for('static', filename='close.png')}}" alt="Logo" onclick="closeModul()" alt="close button" id="close">
+                <div class="btn-box">
+                    <div id="btn"></div>
+                    <button type="button" class="btn-toggle" onclick="login()">Log In</button>
+                    <button type="button" class="btn-toggle" onclick="register()">Register</button>
+                </div>
+                <form action="#" id="login" class="input-group">
+                    <input type="email" class="input-field e-mail" placeholder="E-mail" required>
+                    <input type="password" class="input-field password" placeholder="Enter Password" required>
+                    <input type="checkbox" class="check-box"><span id="rem-pas">Remember Password</span>
+                    <button type="submit" class="btn-submit">Log In</button>
+                </form>
+                <form action="#" id="register" class="input-group">
+                    <input type="email" class="input-field e-mail" placeholder="E-mail" required>
+                    <input type="password" class="input-field password" placeholder="Enter Password" required>
+                    <input type="password" class="input-field password" placeholder="Repeat Password" required>
+                    <input type="checkbox" class="check-box"><span id="terms">I agree to the terms & conditions</span>
+                    <button type="submit" class="btn-submit">Register</button>
+                </form>
+            </div>
+            <div class="blur"></div>    
+        </div>
+    </main>
+    
+    <script>
+        let log = document.getElementById("login");
+        let reg = document.getElementById("register");
+        let btn = document.getElementById("btn");
+
+        function register() {
+            log.style.left = "-400px";
+            reg.style.left = "50px";
+            btn.style.left = "110px";
+        }
+        function login() {
+            log.style.left = "50px";
+            reg.style.left = "450px";
+            btn.style.left = "0";
+        }
+
+        function openModul() {
+            let popup = document.querySelector("#form");
+            let blur = document.querySelector(".blur");
+            popup.classList.toggle("active");
+            blur.classList.toggle("active");
+        }
+        function closeModul() {
+            let popup = document.querySelector("#form");
+            let blur = document.querySelector(".blur");
+            popup.classList.remove("active");
+            blur.classList.remove("active");
+        }
+        function play() {
+            let play = document.querySelector(".play-pause");
+            play.innerHTML = '<i class="fa fa-play-circle" aria-hidden="true" onclick="pause()"></i>';
+        }
+        function pause() {
+            let pause = document.querySelector(".play-pause");
+            pause.innerHTML = '<i class="fa fa-pause-circle" aria-hidden="true" onclick="play()"></i>';
+        }
+        function follow(el) {
+            if (el.classList.contains("followed")) {
+                el.classList.remove("followed");
+            } else {
+                el.classList.add("followed");
+            }
+        }
+    </script>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/all.js" integrity="sha384-SlE991lGASHoBfWbelyBPLsUlwY1GwNDJo3jSJO04KZ33K2bwfV9YBauFfnzvynJ" crossorigin="anonymous"></script>
 </body>
 </html>
