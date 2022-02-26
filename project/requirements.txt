@@ -1,2 +1,4 @@
+cs50
 Flask
 beautifulsoup4
+flask-sqlalchemy

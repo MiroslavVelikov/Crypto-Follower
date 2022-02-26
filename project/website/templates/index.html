@@ -1,0 +1,71 @@
+{% extends "layout.html" %}
+
+{% block body %}
+    <div class="search_box">
+        <div onclick="search()" class="btn btn_common">
+            <i id="search" class="fas fa-search"></i>
+        </div>
+        <input id="search_field" type="text" class="input" placeholder="Search...">
+    </div>
+    <ul id="options">
+        <div>
+            <input type="checkbox" class="toggle" id="rounded">
+            <label for="rounded" class="rounded" data-checked="Following" data-unchecked="Market"></label>
+        </div>
+    </ul>
+
+    <div class="box">
+        <table id="table">
+            <thead>
+                <tr>
+                    <th class="numeration">#</th>
+                    <th class="name">Name</th>
+                    <th class="price">Price</th>
+                    <th class="h24">24h %</th>
+                    <th class="d7">7d %</th>
+                    <th class="follow-btn"> </th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- <tr>
+                    <td class="numeration">1</td>
+                    <td onclick="location.href='/bitcoin';" class="name">Bitcoin</td>
+                    <td class="price">$37,033.68</td>
+                    <td class="h24">0.38%</td>
+                    <td class="d7">3.84%</td>
+                    <td onclick="follow(this);" class="follow-btn"><i class="fa fa-plus" aria-hidden="true"></i></td>
+                </tr> -->
+                {% for currency in market %}
+                    <tr>                        
+                        <td class="numeration">{{ currency["rank"] }}</td>
+                        <td onclick="redirect(this.innerText)" id="proba" class="name">{{ currency["name"] }}</td>
+                        <td class="price">{{ currency["price"] }}</td>
+                        <td class="h24 {{ currency['colore24h'] }}">{{ currency["change24h"] }}%</td>
+                        <td class="d7 {{ currency['colore7d'] }}">{{ currency["change7d"] }}%</td>
+                        <td onclick="follow(this);" class="follow-btn"><i class="fa fa-plus" aria-hidden="true"></i></td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <div class="border"></div>
+
+    <script>
+        function redirect(name) {
+            if (name.indexOf(' ') > 0) {
+                name = name.replace(/\s/g, "-")
+            }
+
+            window.location.href = `/details/${ name.toLowerCase() }`;
+        }
+
+        function search() {
+            name = document.querySelector("#search_field").value
+            if (name.indexOf(' ') > 0) {
+                name = name.replace(/\s/g, "-")
+            }
+
+            window.location.href = `/details/${ name.toLowerCase() }`;
+        }
+    </script>
+{% endblock %}
