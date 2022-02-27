@@ -27,14 +27,6 @@
                 </tr>
             </thead>
             <tbody>
-                <!-- <tr>
-                    <td class="numeration">1</td>
-                    <td onclick="location.href='/bitcoin';" class="name">Bitcoin</td>
-                    <td class="price">$37,033.68</td>
-                    <td class="h24">0.38%</td>
-                    <td class="d7">3.84%</td>
-                    <td onclick="follow(this);" class="follow-btn"><i class="fa fa-plus" aria-hidden="true"></i></td>
-                </tr> -->
                 {% for currency in market %}
                     <tr>                        
                         <td class="numeration">{{ currency["rank"] }}</td>

@@ -1,0 +1,35 @@
+{% extends "layout_auth.html" %}
+
+{% block title %} Login {% endblock %}
+
+{% block body %}
+<div class="login-wrapper">
+    <form action="" class="form" method="POST">
+      <i class="fa fa-user-circle-o fa-5x avatar" aria-hidden="true" alt="avatar icon"></i>
+      <h2>Login</h2>
+      <div class="input-group">
+        <input type="text" name="username" id="loginUser" required>
+        <label for="loginUser">Username</label>
+      </div>
+      <div class="input-group">
+        <input type="password" name="password" id="loginPassword" required>
+        <label for="loginPassword">Password</label>
+      </div>
+      <input type="submit" value="Login" class="submit-btn"> <br>
+      <a href="#forgot-pw" class="forgot-pw">Forgot Password?</a> <br>
+      <a href="/register" class="forgot-pw">Don't have an account?</a>
+    </form>
+
+    <div id="forgot-pw">
+      <form action="" class="form">
+        <a href="#" id="close">&times;</a>
+        <h2>Reset Password</h2>
+        <div class="input-group">
+          <input type="email" name="email" id="email" required>
+          <label for="email">Email</label>
+        </div>
+        <input type="submit" value="Submit" class="submit-btn">
+      </form>
+    </div>
+</div>
+{% endblock %}

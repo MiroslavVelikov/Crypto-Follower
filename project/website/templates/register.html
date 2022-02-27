@@ -1,0 +1,29 @@
+{% extends "layout_auth.html" %}
+
+{% block title %} Register {% endblock %}
+
+{% block body %}
+<div class="login-wrapper">
+    <form action="" class="form" method="POST">
+      <h2>Register</h2>
+      <div class="input-group">
+        <input type="email" name="email" id="registerEmail" required>
+        <label for="registerEmail">Email</label>
+      </div>
+      <div class="input-group">
+        <input type="text" name="username" id="loginUser" required>
+        <label for="loginUser">Username</label>
+      </div>
+      <div class="input-group">
+        <input type="password" name="password" id="registerPassword" required>
+        <label for="registerPassword">Password</label>
+      </div>
+      <div class="input-group">
+        <input type="password" name="re-password" id="registerRePassword" required>
+        <label for="registerRePassword">Repeat Password</label>
+      </div>
+      <input type="submit" value="Register" class="submit-btn"> <br>
+      <a href="/login" class="forgot-pw">Already Registered?</a>
+    </form>
+</div>
+{% endblock %}
