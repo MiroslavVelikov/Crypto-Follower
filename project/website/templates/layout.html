@@ -23,18 +23,20 @@
         </section>
         <section class="flex"> 
             <div class="play-pause">
-                <i class="fa fa-pause-circle" aria-hidden="true" onclick="play()"></i>
+                <i class="fa fa-play-circle" aria-hidden="true" onclick="pause()"></i>
             </div>
-            <div class="moving-currencies">
-                {% for currency in slider %}
-                    <a href="/details/{{ currency.name.lower() }}" class="currency">
-                        <span class="name">{{ currency.name }}</span>
-                        <span class="price-wrapper {{ currency.color }}">
-                            <span class="price">{{ currency.price }}</span>
-                            <span class="change">{{ currency.change }}</span>
-                        </span>
-                    </a>
-                {% endfor %}
+            <div class="pseudo_slider">
+                <div class="moving-currencies animation paused">
+                    {% for currency in slider %}
+                        <a href="/details/{{ currency.name.lower() }}" class="currency">
+                            <span class="name">{{ currency.name }}</span>
+                            <span class="price-wrapper {{ currency.color }}">
+                                <span class="price">{{ currency.price }}</span>
+                                <span class="change">{{ currency.change }}</span>
+                            </span>
+                        </a>
+                    {% endfor %}
+                </div>
             </div>
         </section>
     </header>
@@ -48,10 +50,12 @@
         function play() {
             let play = document.querySelector(".play-pause");
             play.innerHTML = '<i class="fa fa-play-circle" aria-hidden="true" onclick="pause()"></i>';
+            document.querySelector('.animation').classList.add('paused')
         }
         function pause() {
             let pause = document.querySelector(".play-pause");
             pause.innerHTML = '<i class="fa fa-pause-circle" aria-hidden="true" onclick="play()"></i>';
+            document.querySelector('.animation').classList.remove('paused')
         }
         function follow(el) {
             if (el.classList.contains("followed")) {

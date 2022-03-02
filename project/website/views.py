@@ -1,7 +1,7 @@
-from . import db
-from flask_login import login_required, logout_user, current_user
+from .models import User
+from flask import Blueprint, render_template, redirect, url_for
+from flask_login import login_required, current_user
 from .ScrapingInfo import MarketInfo, SliderInfo, CurrencyDetails
-from flask import Blueprint, request, render_template, redirect, url_for, flash
 
 views = Blueprint('views', __name__)
 
@@ -19,6 +19,14 @@ def home():
 def details(name):
     details = {}
     slider = []
+    name = name.replace(" ", "-")
     CurrencyDetails(name, details)
     SliderInfo(slider)
-    return render_template("details.html", details=details, slider=slider)
+    return render_template("details.html", user=current_user, details=details, slider=slider)
+
+@views.route("/add-to-favorite")
+@login_required
+def favorite():
+    # TODO 
+    # Add currency to User currencies
+    return redirect(url_for("views.home"))

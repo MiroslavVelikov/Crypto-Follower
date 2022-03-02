@@ -33,8 +33,14 @@
                         <td onclick="redirect(this.innerText)" id="proba" class="name">{{ currency["name"] }}</td>
                         <td class="price">{{ currency["price"] }}</td>
                         <td class="h24 {{ currency['colore24h'] }}">{{ currency["change24h"] }}%</td>
-                        <td class="d7 {{ currency['colore7d'] }}">{{ currency["change7d"] }}%</td>
-                        <td onclick="follow(this);" class="follow-btn"><i class="fa fa-plus" aria-hidden="true"></i></td>
+                        <td class="d7 {{ currency['colore7d'] }}">{{ currency["change7d"] }}%</td>    
+                        <td onclick="follow(this);" class="follow-btn">
+                            <form action="/add-to-favorite" method="GET">
+                                <button type="submit" class="button">
+                                    <i class="fa fa-plus fa-2x" aria-hidden="true"></i>     
+                                </button>
+                            </form>
+                        </td>
                     </tr>
                 {% endfor %}
             </tbody>
