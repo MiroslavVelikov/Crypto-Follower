@@ -3,52 +3,97 @@
 {% block body %}
     <div class="search_box">
         <div onclick="search()" class="btn btn_common">
-            <i id="search" class="fas fa-search"></i>
+            <i id="search" class="fa fa-search fa-1x aria-hidden="true"></i>
         </div>
         <input id="search_field" type="text" class="input" placeholder="Search...">
     </div>
     <ul id="options">
         <div>
             <input type="checkbox" class="toggle" id="rounded">
-            <label for="rounded" class="rounded" data-checked="Following" data-unchecked="Market"></label>
+            <label onclick="switch_options()" for="rounded" class="rounded" data-checked="Following" data-unchecked="Market"></label>
         </div>
     </ul>
 
-    <div class="box">
-        <table id="table">
-            <thead>
-                <tr>
-                    <th class="numeration">#</th>
-                    <th class="name">Name</th>
-                    <th class="price">Price</th>
-                    <th class="h24">24h %</th>
-                    <th class="d7">7d %</th>
-                    <th class="follow-btn"> </th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for currency in market %}
-                    <tr>                        
-                        <td class="numeration">{{ currency["rank"] }}</td>
-                        <td onclick="redirect(this.innerText)" id="proba" class="name">{{ currency["name"] }}</td>
-                        <td class="price">{{ currency["price"] }}</td>
-                        <td class="h24 {{ currency['colore24h'] }}">{{ currency["change24h"] }}%</td>
-                        <td class="d7 {{ currency['colore7d'] }}">{{ currency["change7d"] }}%</td>    
-                        <td onclick="follow(this);" class="follow-btn">
-                            <form action="/add-to-favorite" method="GET">
-                                <button type="submit" class="button">
-                                    <i class="fa fa-plus fa-2x" aria-hidden="true"></i>     
-                                </button>
-                            </form>
-                        </td>
+    <div>
+        <div class="box">
+            <table id="table">
+                <thead>
+                    <tr>
+                        <th class="numeration">#</th>
+                        <th class="name">Name</th>
+                        <th class="price">Price</th>
+                        <th class="h24">24h %</th>
+                        <th class="d7">7d %</th>
+                        <th class="follow-btn"> </th>
                     </tr>
-                {% endfor %}
-            </tbody>
-        </table>
+                </thead>
+                <tbody>
+                    {% for currency in market %}
+                        <tr>                        
+                            <td class="numeration">{{ currency["rank"] }}</td>
+                            <td onclick="redirect(this.innerText)" class="name">{{ currency["name"] }}</td>
+                            <td class="price">{{ currency["price"] }}</td>
+                            <td class="h24 {{ currency['colore24h'] }}">{{ currency["change24h"] }}%</td>
+                            <td class="d7 {{ currency['colore7d'] }}">{{ currency["change7d"] }}%</td>    
+                            <td class="follow-btn">
+                                <form method="POST">
+                                    <input type="text" name="name" style="visibility: hidden; position: absolute;" value="{{ currency['name'] }}">
+                                    <button type="submit" class="button">
+                                        <i class="fa fa-plus fa-2x" aria-hidden="true"></i>     
+                                    </button>
+                                </form>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <div class="followed">
+            <table>
+                <thead>
+                    <tr>
+                        <th class="numeration-f">#</th>
+                        <th class="name-f">Name</th>
+                        <th> </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for currency in user.currencies %}
+                        <tr>
+                            <td></td>
+                            <td class="numeration-f" >{{ loop.index }}</td>
+                            <td class="name-f" onclick="redirect(this.innerText)">{{ currency.name }}</td>
+                            <td>
+                                <form method="POST">
+                                    <input type="text" name="name" style="visibility: hidden; position: absolute;" value="{{ currency.name }}">
+                                    <button type="submit" class="button">
+                                        <i class="fa fa-times fa-2x" aria-hidden="true"></i>
+                                    </button>
+                                </form>
+                            </td>
+                            <td></td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
     </div>
     <div class="border"></div>
 
     <script>
+        function switch_options() {
+            market = document.querySelector('.box')
+            follow_list = document.querySelector('.followed')
+
+            if(market.classList.contains("move_to_left")){
+                market.classList.remove("move_to_left")
+                follow_list.classList.remove("move_in")
+            } else {
+                market.classList.add("move_to_left")
+                follow_list.classList.add("move_in")
+            }
+        }
+
         function redirect(name) {
             if (name.indexOf(' ') > 0) {
                 name = name.replace(/\s/g, "-")
@@ -56,7 +101,6 @@
 
             window.location.href = `/details/${ name.toLowerCase() }`;
         }
-
         function search() {
             name = document.querySelector("#search_field").value
             if (name.indexOf(' ') > 0) {

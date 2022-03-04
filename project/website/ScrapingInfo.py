@@ -59,32 +59,33 @@ def CurrencyDetails(name, details):
     doc = BeautifulSoup(result, "html.parser")
 
     price_section = doc.find("div", class_="priceSection")
-    fixed_name = price_section.h1.text.rsplit(' ', 2)[0]
-    fixed_price = price_section.find("div", class_="priceTitle").div.span.text
-    fixed_change = price_section.find("div", class_="priceTitle").find_all("span")[1].text
-    up_down_change = str(price_section.find("div", class_="priceTitle").find_all("span")[2])
-    fixed_color = re.findall("[a-z]+", up_down_change)[-2]
-    low_high = price_section.find_all("span", class_="dBJPYV")
-    fixed_low = low_high[0].text
-    fixed_high = low_high[1].text
-    
-    stat_values = doc.find_all("div", class_="statsValue")
-    fixed_market_cap = stat_values[0].text
-    fixed_volume = stat_values[2].text
+    if price_section != "Invalid currency" and price_section != None:
+        fixed_name = price_section.h1.text.rsplit(' ', 2)[0]
+        fixed_price = price_section.find("div", class_="priceTitle").div.span.text
+        fixed_change = price_section.find("div", class_="priceTitle").find_all("span")[1].text
+        up_down_change = str(price_section.find("div", class_="priceTitle").find_all("span")[2])
+        fixed_color = re.findall("[a-z]+", up_down_change)[-2]
+        low_high = price_section.find_all("span", class_="dBJPYV")
+        fixed_low = low_high[0].text
+        fixed_high = low_high[1].text
 
-    details["name"] = fixed_name
-    details["price"] = fixed_price
-    details["change"] = fixed_change
-    details["color_of_change"] = fixed_color
-    details["low"] = fixed_low
-    details["high"] = fixed_high
-    details["market_cap"] = fixed_market_cap
-    details["volume"] = fixed_volume
-    info = []
-    GetText(name, info)
-    if not info:
-        info.append("Unfortunately the necessary data for this indicator is not available at the moment.")
-    details["text"] = info
+        stat_values = doc.find_all("div", class_="statsValue")
+        fixed_market_cap = stat_values[0].text
+        fixed_volume = stat_values[2].text
+
+        details["name"] = fixed_name
+        details["price"] = fixed_price
+        details["change"] = fixed_change
+        details["color_of_change"] = fixed_color
+        details["low"] = fixed_low
+        details["high"] = fixed_high
+        details["market_cap"] = fixed_market_cap
+        details["volume"] = fixed_volume
+        info = []
+        GetText(name, info)
+        if not info:
+            info.append("Unfortunately the necessary data for this indicator is not available at the moment.")
+        details["text"] = info
 
 def SliderInfo(currencies, doc = ""):
     if not doc:
