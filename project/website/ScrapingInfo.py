@@ -25,9 +25,9 @@ def MarketInfo(currencies):
             "name": fixed_name,
             "price": fixed_price,
             "change24h": fixed_change24h,
-            "colore24h": fixed_color24h,
+            "color24h": fixed_color24h,
             "change7d": fixed_change7d,
-            "colore7d": fixed_color7d
+            "color7d": fixed_color7d
             }
             
         currencies.append(currency)
@@ -38,20 +38,21 @@ def GetText(name, info):
     doc = BeautifulSoup(result, "html.parser")
 
     content = doc.find("div", class_="cQofyD")
-    start = 0
-    end = 0
-    count = 0
-    for p in content:
-        if end != 0:
-            break
-        elif "jFqdBZ" in str(p):
-            if start == 0:
-                start = count + 1
-            else:
-                end = count
-        count += 1
-    for p in content.contents[start:end]:
-        info.append(p.text)
+    if content:
+        start = 0
+        end = 0
+        count = 0
+        for p in content:
+            if end != 0:
+                break
+            elif "jFqdBZ" in str(p):
+                if start == 0:
+                    start = count + 1
+                else:
+                    end = count
+            count += 1
+        for p in content.contents[start:end]:
+            info.append(p.text)
 
 def CurrencyDetails(name, details):
     url = f"https://coinmarketcap.com/currencies/{ name }/"

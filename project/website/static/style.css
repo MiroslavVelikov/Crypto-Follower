@@ -1,5 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=PT+Serif:wght@700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap');
 
 :root {
   --main-text-color: #90B8F8;
@@ -517,7 +517,6 @@ tr .name-f {
 }
 .followed {
   position: absolute;
-  top: 51vh;
   right: -200%;
   transition: 1s;
 }

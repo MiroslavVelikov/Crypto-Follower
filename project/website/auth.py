@@ -15,9 +15,6 @@ def login():
         user = User.query.filter_by(username=username).first()
         if user:
             if check_password_hash(user.password, password):
-                print(username)
-                print(password)
-                print(user)
                 login_user(user, remember=True)
                 return redirect(url_for('views.home'))
             else:
@@ -51,7 +48,6 @@ def signin():
             db.session.add(new_user)
             db.session.commit()
             login_user(new_user, remember=True)
-            flash('Account created!', category='success')
             return redirect(url_for('views.home'))
     return render_template("register.html")
 
