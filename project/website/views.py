@@ -45,6 +45,7 @@ def details(name):
     details = {}
     slider = []
     name = name.replace(" ", "-")
+    slider = SliderCurrency.query.all()
     CurrencyDetails(name, details)
     if not details:
         details["name"] = "Invalid Currency"
@@ -56,7 +57,7 @@ def details(name):
         details["market_cap"] = "-------"
         details["volume"] = "-------"
         details["text"] = "-------"
-    CheckForNewChange()
+    CheckForNewChange(last_change)
     return render_template("details.html", user=current_user, details=details, slider=slider)
 
 def CheckForNewChange(last_change):
@@ -64,14 +65,26 @@ def CheckForNewChange(last_change):
         First_Load()
     now = datetime.now().strftime('%H:%M:%S')
     updated = ( last_change["last_change"] +
-           timedelta( minutes=1 )).strftime('%H:%M:%S')
+           timedelta( minutes=5 )).strftime('%H:%M:%S')
     if now > updated:
         last_change["last_change"] = datetime.now()
-        print("Changed", last_change["last_change"])
-    else:
-        print("Now", now)
-        print("Not updated yet", updated)
+        Reload()
+
+def Reload():
+    market = []
+    slider = []
+    MarketInfo(market)
+    SliderInfo(slider)
+
+    for x, y in zip(market, range(1, 10)):
+        MarketCurrency.query.filter_by(id=y).update({"name":x["name"], "price":x["price"], "change24h":x["change24h"], "color24h":x["color24h"],
+            "change7d":x["change7d"], "color7d":x["color7d"]})
+        db.session.commit()
     
+    for x, y in zip(slider, range(1, 10)):
+        SliderCurrency.query.filter_by(id=y).update({"name":x["name"], "price":x["price"], "change":x["change"], "color":x["color"]})
+        db.session.commit()
+
 def First_Load():
     market = []
     slider = []
