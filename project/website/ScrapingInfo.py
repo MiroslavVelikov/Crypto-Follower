@@ -31,7 +31,7 @@ def MarketInfo(currencies):
             }
             
         currencies.append(currency)
-        return "Success"
+    return "Success"
 
 def GetText(name, info):
     url = f"https://www.coindesk.com/price/{ name }/"

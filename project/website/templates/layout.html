@@ -15,7 +15,7 @@
                 <img src="{{url_for('static', filename='logo.png')}}" alt="Logo" style="width: 45px; height: 60px; cursor: pointer;">
             </a>
             <h1>Crypto-Follower</h1>
-            <h3 style="position: absolute; right: 5%;">{{ user.username }}</h3>
+            <h3 id="username">{{ user.username }}</h3>
             <div class="in-out">
                 <!-- <i class="fas fa-sign-in-alt" onclick="location.href = '/login'" style="cursor: pointer;"></i> -->
                 <i class="fas fa-sign-out-alt" onclick="window.location='/logout'" style="cursor: pointer;"></i>

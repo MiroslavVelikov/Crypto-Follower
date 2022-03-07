@@ -12,7 +12,7 @@ body {
   overflow: hidden;
   overflow-y: scroll;
   transition: 1s;
-  min-width: 424px;
+  min-width: 300px;
 }
 
 header, #options, .market_and_volume {
@@ -311,116 +311,6 @@ tr .name-f {
   flex: 1 1 80%;
   cursor: pointer;
 }
-/* login & register forms */
-#form {
-  width: 380px; height: 100%;
-  border: 2px solid #26282B;
-  background-color: #353941;
-  top: -1000%; right: 0; bottom: 0; left: 0;
-  margin: auto;
-  position: absolute;
-  z-index: 10;
-  overflow: hidden;
-}
-.input-field {
-  color: #fff;
-}
-.blur {
-  width: 100%; height: 100%;
-  position: absolute;
-  z-index: 9;
-  top: 0;
-  background: #485461;
-  background-image: linear-gradient(315deg, #485461 0%, #28313b 74);
-  opacity: .8;
-  cursor: none;
-}
-#form, .blur {
-  transition: 1s;
-  visibility: hidden;
-}
-#form.active, .blur.active {
-  top: 0;
-  visibility: visible;
-}
-#close {
-  position: absolute;
-  top: 10px;
-  right: 20px;
-  cursor: pointer;
-  width: 40px;
-}
-.btn-box {
-  width: 220px;
-  margin: 95px auto;
-  position: relative;
-  box-shadow: 0 0 20px 1px #90b8f8;
-  border-radius: 30px;
-}
-.btn-toggle {
-  padding: 10px 30px;
-  cursor: pointer;
-  background: transparent;
-  border: 0;
-  outline: none;
-  position: relative;
-  color: #fff;
-}
-#btn {
-  top: 0; left: 0;
-  position: absolute;
-  width: 110px; height: 100%;
-  background: linear-gradient(to right, #5f85db, #90b8f8);
-  border-radius: 30px;
-  transition: .5s;
-}
-.input-group {
-  top: 210px;
-  position: absolute;
-  width: 280px;
-  transition: .5s;
-}
-.input-field {
-  width: 100%;
-  padding: 10px 0; margin: 5px 0;
-  border: 0;
-  border-bottom: 1px solid #999;
-  outline: none;
-  background: transparent;
-}
-.input-field:hover {
-  border-bottom: 1px solid #5f85db;
-  transition: 2s;
-  transition-timing-function: linear;
-}
-.btn-submit {
-  width: 85%;
-  padding: 10px 30px;
-  cursor: pointer;
-  display: block;
-  margin: auto;
-  background: linear-gradient(to right, #5f85db, #90b8f8);
-  border: 0;
-  outline: none;
-  border-radius: 30px;
-  color: #fff;
-}
-.check-box {
-  margin: 30px 10px 30px 0;
-}
-#rem-pas, #terms {
-  color: #777;
-  font-size: 12px;
-  bottom: 64px;
-  left: 20px;
-  position: absolute;
-}
-#login {
-  left: 50px;
-}
-#register {
-  left: 450px;
-}
 
 /* Details.html */
 #details_box {
@@ -527,4 +417,44 @@ tr .name-f {
 }
 .move_in {
   right: 0;
+}
+
+/* Responsiveness */
+@media (max-width: 1000px) {
+  tr .follow-btn {
+    visibility: hidden;
+    flex: 0 0 0;
+  }
+}
+
+@media (max-width: 450px) {
+  body {
+    max-height: 1000px;
+    overflow-x: hidden;
+  }
+  #navbar h1 {
+    font-size: 26px;
+  }
+  #navbar h3 {
+    visibility: hidden;
+  }
+  tr .d7 {
+    visibility: hidden;
+    flex: 0 0 0;
+  }
+  tr .numeration {
+    flex: 0 1 15%;
+  }
+  tr .name, tr .price, tr .h24 {
+    flex: 0 0 25%;
+  }
+  .price_box .price {
+    font-size: 64px;
+  }
+  .followed {
+    visibility: hidden;
+  }
+  .move_in {
+    visibility: visible;
+  }
 }
