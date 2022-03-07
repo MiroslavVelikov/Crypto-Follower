@@ -31,6 +31,7 @@ def MarketInfo(currencies):
             }
             
         currencies.append(currency)
+        return "Success"
 
 def GetText(name, info):
     url = f"https://www.coindesk.com/price/{ name }/"
@@ -53,6 +54,7 @@ def GetText(name, info):
             count += 1
         for p in content.contents[start:end]:
             info.append(p.text)
+        return "Success"
 
 def CurrencyDetails(name, details):
     url = f"https://coinmarketcap.com/currencies/{ name }/"
@@ -87,6 +89,7 @@ def CurrencyDetails(name, details):
         if not info:
             info.append("Unfortunately the necessary data for this indicator is not available at the moment.")
         details["text"] = info
+        return "Success"
 
 def SliderInfo(currencies, doc = ""):
     if not doc:
@@ -107,3 +110,4 @@ def SliderInfo(currencies, doc = ""):
         else:
             currency["color"] = "up"
         currencies.append(currency)
+    return "Success"
