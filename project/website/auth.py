@@ -56,3 +56,9 @@ def signin():
 def logout():
     logout_user()
     return redirect(url_for("auth.login"))
+
+@auth.route("/reset-password")
+def reset_password():
+    #TODO Send email
+    flash("This feature is still in progress!", category="error")
+    return redirect(url_for("auth.login"))

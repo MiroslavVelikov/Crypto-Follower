@@ -111,9 +111,11 @@
             name = document.querySelector("#search_field").value
             if (name.indexOf(' ') > 0) {
                 name = name.replace(/\s/g, "-")
-            }
+            } 
 
-            window.location.href = `/details/${ name.toLowerCase() }`;
+            if (name) {
+                window.location.href = `/details/${ name.toLowerCase() }`;
+            }
         }
     </script>
 {% endblock %}
